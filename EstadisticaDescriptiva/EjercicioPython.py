@@ -25,7 +25,7 @@ dfEstadisticas = pd.DataFrame(estadisticas)
 print(tabulate(dfEstadisticas, headers='keys', tablefmt='rounded_grid'))
 
 
-#GRAFICO (esas casas cuestan mucho)
+#GRAFICO (esas casas cuestan mucho 
 
 #El total de la popularidad
 df_sample = df.head(2000)
@@ -41,10 +41,10 @@ plt.bar(df_sample.index, df_sample['population'] * 10, label="popularidad", colo
 promedio_mhv = df['median_house_value'].mean()
 plt.axhline(promedio_mhv, color='purple', linestyle='--', linewidth=2, label="Promedio del valor medio de la casa")
 
-#Los ejes de la grafica y su super nombre
+#Los datos de la grafica y su super nombre
 plt.xlabel("Popularidad")
 plt.ylabel("Valor medio de la casa")
 plt.title("Grafico de el Valor Medio de la Casa VS la Popularidad,\ncon el promedio del Valor Medio de la Casa incluido")
 
-# Mostrar el super gráfico 
+# Mostrar el super gráfico
 plt.show()
