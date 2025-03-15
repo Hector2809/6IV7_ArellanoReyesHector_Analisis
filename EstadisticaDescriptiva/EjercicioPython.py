@@ -34,8 +34,8 @@ df_sample = df.head(2000)
 plt.figure(figsize=(10, 5))
 
 # Graficar el median house value y el population
-plt.bar(df_sample.index, df_sample['median_house_value'], label="Valor medio de la casa", color='green')
-plt.bar(df_sample.index, df_sample['population'] * 10, label="popularidad", color='red')
+plt.bar(df_sample.index[:25], df_sample['median_house_value'][:25], label="Valor medio de la casa", color='green')
+plt.bar(df_sample.index[:25], df_sample['population'][:25], label="popularidad", color='red')
 
 #El promedio del median house value y su linea graficada
 promedio_mhv = df['median_house_value'].mean()
