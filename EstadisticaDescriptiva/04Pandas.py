@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('./EstadisticaDescriptiva/housing.csv')
+df = pd.read_csv('./EstadisticaDescriptiva/Tablas/housing.csv')
 
 print(df.head())
 

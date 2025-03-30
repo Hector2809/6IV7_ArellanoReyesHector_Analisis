@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 
 #Sacar los datos del excel
-df = pd.read_csv('./EstadisticaDescriptiva/housing.csv')
+df = pd.read_csv('./EstadisticaDescriptiva/Tablas/housing.csv')
 
 #Que es cada datos del excel (lo que segun yo son los encabezados)
 elementos = ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population', 'households', 'median_income', 'median_house_value']
