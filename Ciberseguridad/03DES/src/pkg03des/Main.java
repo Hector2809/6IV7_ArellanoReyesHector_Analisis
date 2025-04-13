@@ -1,85 +1,80 @@
 package pkg03des;
 
-//es para definir entradas y salidas del sistema para el manejo de archivos
+//Es para definir entradas y salidas del sistema para el manejo de archivos.
 import java.io.*;
-//Calculo de subllaves
+//Calculo de subllaves.
 import java.security.*;
-//definir algoritmo de cifrado
+//Definir algoritmo de cifrado.
 import javax.crypto.*;
 
-//para el algoritmo
+//Para el algoritmo.
 import javax.crypto.interfaces.*;
-//definir el tamaño de la clave y subclaves
+//Definir el tamaño de la clave y subclaves.
 import javax.crypto.spec.*;
 
 public class Main {
 
     public static void main(String[] args) throws Exception{
         
-        //Crear un programa que lea un archivo de texto plano, se debe introducir una clave
+        /*Crear un programa que lea un archivo de texto plano, se debe introducir una clave
+        debe cifrarlo y generar el archivo correspondiente.*/
         
-        
-        //debe cifrarlo y generar el archivo correspondiente
-        
-        //usaremos DES
+        //Usaremos DES.
         if(args.length != 1){
             mensajeAyuda();
             System.exit(1);
         }
         
-        //paso 1 definir el algoritmo y su clave
+        //Paso 1: definir el algoritmo y su clave.
         System.out.println("1.- Generar las claves DES");
-        //para generar las claves usamos la clase KeyGenerator
+        //Para generar las claves usamos la clase KeyGenerator.
         KeyGenerator generadorDES = KeyGenerator.getInstance("DES");
         
         System.out.println("");
-        //debemos inicializar el tamaño de la clave
-        generadorDES.init(56);//el tamaño de la clave es de 64 - 8 bits de paridad
-        //el algoritmo envia error si no es exactamente de 56
+        //Debemos inicializar el tamaño de la clave.
+        generadorDES.init(56); //El tamaño de la clave es de 64 - 8 bits de paridad.
+        //El algoritmo envia error si no es exactamente de 56.
         
-        //hay dos opciones para definir la clave, manual o con la clase SecretKey
-        //si es manual se ingresa por parte del usuario, se validsa que sean 8 caracteres
-        //luego transformamos la clave en bits
+        /*Hay dos opciones para definir la clave, manual o con la clase SecretKey,
+        si es manual se ingresa por parte del usuario, se valida que sean 8 caracteres Y
+        luego transformamos la clave en bits.*/
         
-        //Estas son las subclaves para las 16 rondas
+        //Estas son las subclaves para las 16 rondas.
         SecretKey clave = generadorDES.generateKey();
         
         System.out.println("La clave es: " + clave);
         
-        //NO es posible distinguir los  bytes de un caracter si no esta cifrado
+        //NO es posible distinguir los  bytes de un caracter si no esta cifrado.
         mostrarBytes(clave.getEncoded());
         
         System.out.println("Clave codificada: " + clave.getEncoded());
         System.out.println("");
         
-        /*
-        El tipo de cifrado es DES, que es simetrico, lo que significa que la clave de cifrado es la misma para descrifrar.
+        /*El tipo de cifrado es DES, que es simetrico, lo que significa que la clave de cifrado es la misma para descrifrar.
         Hay que definir el modo de operacion del cifrado.
-        El flujo es por bloques
+        El flujo es por bloques.
         ECB
-        si va a tener o no un relleno
-        Debemos de aplicar un estandar para el relleno
-        Este es el estandar de relleno PKCS5 y hay que programarlo
-        */
+        Si va a tener o no un relleno.
+        Debemos de aplicar un estandar para el relleno.
+        Este el estandar de relleno es "PKCS5" y hay que programarlo.*/
         
         Cipher cifrador = Cipher.getInstance("DES/ECB/PKCS5Padding");
         
-        //Vamos a crear el menu para cifrar y descifrar
-        System.out.println("2.- Cifar un fichero con DES: " + args[0]
+        //Vamos a crear el menu para cifrar y descifrar.
+        System.out.println("2.- Cifrar un fichero con DES: " + args[0]
                 + " dejamos el resultado en: " + args[0] + ".cifrado");
         
-        //Tenemos que cargar el archivo y ejecutar el cifrado
-        
+        //Tenemos que cargar el archivo y ejecutar el cifrado.
         cifrador.init(Cipher.ENCRYPT_MODE, clave);
         
-        //Aqui es importante recordar el modo
-        //ECB no puede automatizar el flujo del bloque
+        //Aquí es importante recordar el modo.
+        //ECB no puede automatizar el flujo del bloque.
         
         byte[] buffer = new byte[1000];
-        //este arreglo sireve para guardar el resultado
+        //Este arreglo sirve para guardar el resultado.
         byte[] buffercifrado;
         
-        //definir el archivo
+        //Definir el archivo.
         FileInputStream entrada = new FileInputStream(args[0]);
         FileOutputStream salida = new FileOutputStream(args[0] + ".cifrado");
         
@@ -92,9 +87,9 @@ public class Main {
         }
         
         
-        //construir la salida
+        //Construir la salida.
         buffercifrado = cifrador.doFinal();
-        //genero el archivo de salida
+        //Generar el archivo de salida.
         salida.write(buffercifrado);
         
         entrada.close();
@@ -104,39 +99,38 @@ public class Main {
         
         
         
-        //Ahora el descifrado
+        //Ahora el descifrado.
         
-        //Vamos a crear el menu para cifrar y descifrar
-        System.out.println("3.- Descifar un fichero con DES: " + args[0]
+        //Vamos a crear el menu para cifrar y descifrar.
+        System.out.println("3.- Descifrar un fichero con DES: " + args[0]
                 + " dejamos el resultado en: " + args[0] + " descifrado");
         
-        //Tenemos que cargar el archivo y ejecutar el cifrado
-        
+        //Tenemos que cargar el archivo y ejecutar el cifrado.
         cifrador.init(Cipher.DECRYPT_MODE, clave);
         
-        //Aqui es importante recordar el modo
-        //ECB no puede automatizar el flujo del bloque
+        //Aquí es importante volver recordar el modo.
+        //ECB no puede automatizar el flujo del bloque.
         
         
-        //este arreglo sireve para guardar el resultado
+        //Este arreglo sirve para guardar el resultado.
         byte[] bufferdescifrado;
         
-        //definir el archivo
+        //Definir el archivo.
         entrada = new FileInputStream(args[0] + ".cifrado");
         salida = new FileOutputStream(args[0] + ".descifrado");
         
         bytesleidos = entrada.read(buffer, 0, 1000);
         
         while(bytesleidos != -1){
-            bufferdescifrado = cifrador.update(buffer, 0, 1000);
+            bufferdescifrado = cifrador.update(buffer, 0, bytesleidos);
             salida.write(bufferdescifrado);
             bytesleidos = entrada.read(buffer, 0, bytesleidos);
         }
         
         
-        //construir la salida
+        //Construir la salida.
         bufferdescifrado = cifrador.doFinal();
-        //genero el archivo de salida
+        //Generar el archivo de salida.
         salida.write(bufferdescifrado);
         
         entrada.close();

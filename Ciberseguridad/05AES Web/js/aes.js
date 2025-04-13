@@ -1,11 +1,18 @@
-var mensaje = "Habia una vez un huevo que era muy huevon, tanto que faltaba varios dias a la escuela";
-var password = "qwertyuiqwertyui";
+function cifrar(){
+    var mensaje = document.getElementById("texto_a_cifrar").value;
+    var password = document.getElementById("clave").value;
 
-var cifrado = CryptoJS.AES.encrypt(mensaje, password);
-var descifrado = CryptoJS.AES.decrypt(cifrado, password);
+    var cifrado = CryptoJS.AES.encrypt(mensaje, password);
 
-//Pa que se vea
-document.getElementById("demo00").innerHTML = mensaje;
-document.getElementById("demo01").innerHTML = cifrado;
-document.getElementById("demo02").innerHTML = descifrado;
-document.getElementById("demo03").innerHTML = descifrado.toString(CryptoJS.enc.Utf8);
+    document.getElementById("texto_cifrado").textContent = "El texto cifrado es: " + cifrado;
+}
+
+function descifrar(){
+    var mensaje = document.getElementById("texto_a_descifrar").value;
+    var password = document.getElementById("clave").value;
+
+    var descifrado = CryptoJS.AES.decrypt(mensaje, password);
+
+    document.getElementById("texto_descifrado").textContent = "El texto descifrado sin formato es: " + descifrado;
+    document.getElementById("texto_descifrado_formato").textContent = "El texto descifrado con formato es: " + descifrado.toString(CryptoJS.enc.Utf8);
+}

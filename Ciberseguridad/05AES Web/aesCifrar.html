@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado con AES</title>
+    <link rel="stylesheet" href="/Ciberseguridad/css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cifrado con AES</h2>
+        <br>
+        <strong><label>Por favor, ingresa el mensaje a cifrar</label></strong>
+        <br><br>
+        <strong><input type="text" name="texto" id="texto_a_cifrar" class="form-control"></strong>
+        <br><br>
+        <strong><label>Por favor, ingresa la clave</label></strong>
+        <br><br>
+        <strong><input type="text" name="texto" id="clave" class="form-control"></strong>
+        <br><br>
+        <input type="button" value="Cifrar" onclick="cifrar()">
+        <br><br>
+        <strong><label id="texto_cifrado"></label></strong>
+        <br><br>
+        <a href="/Ciberseguridad/05AES Web/elige.html"><input type="button" value="Volver"></a>
+    </div><br>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/aes.js"></script>
+</body>
+</html>
