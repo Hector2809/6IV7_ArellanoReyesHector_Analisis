@@ -18,10 +18,14 @@ function cifrar(){
     document.getElementById("texto_cifrado").textContent = "El texto cifrado es: " + cifrado;
 
     var blob = new Blob([cifrado], { type: "text/plain;charset=utf-8" });
+
     var enlace = document.createElement("a");
     enlace.href = URL.createObjectURL(blob);
     enlace.download = "mensaje_cifrado.txt";
+
+    document.body.appendChild(enlace);
     enlace.click();
+    document.body.removeChild(enlace);
 }
 
 function descifrar(){
