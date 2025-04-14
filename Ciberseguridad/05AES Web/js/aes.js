@@ -8,11 +8,11 @@ function cifrar(){
         alert("Por favor, llena todos los campos.");
         return;
     }
-    if (password.length() != 16 || password.length() != 24 || password.length() != 32) {
+    if (password.length() != 16 && password.length() != 24 && password.length() != 32) {
         alert("La clave debe tener al menos 16, 24 o 32 caracteres.");
         return;
     }
-    if (mensaje.length() != 16 || mensaje.length() != 24 || mensaje.length() != 32){
+    if (mensaje.length() != 16 && mensaje.length() != 24 && mensaje.length() != 32){
         alert("El texto debe tener al menos 16, 24 o 32 caracteres.")
         return;
     }
@@ -30,7 +30,7 @@ function descifrar(){
         alert("Por favor, llena todos los campos.");
         return;
     }
-    if (password.length() != 16 || password.length() != 24 || password.length() != 32) {
+    if (password.length() != 16 && password.length() != 24 && password.length() != 32) {
         alert("La clave debe tener al menos 16, 24 o 32 caracteres.");
         return;
     }
