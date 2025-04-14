@@ -28,23 +28,27 @@ function cifrar(){
     document.body.removeChild(enlace);
 }
 
-function leerArchivoYDescifrar(){
-    var mensaje = document.getElementById("archivo_cifrado").files[0];
+function leerArchivoYDescifrar() {
+    var archivo = document.getElementById("archivo_cifrado").files[0];
     var password = document.getElementById("clave").value.trim();
 
-    if (!mensaje) {
+    if (!archivo) {
         alert("Por favor, selecciona un archivo de texto cifrado.");
         return;
     }
+
     if (password === "") {
-        alert("Por favor, ingresa una clave.");
+        alert("Por favor, ingresa la clave.");
         return;
     }
-    if (password.length != 16 && password.length != 24 && password.length != 32) {
-        alert("La clave debe tener al menos 16, 24 o 32 caracteres.");
+
+    if (password.length !== 16 && password.length !== 24 && password.length !== 32) {
+        alert("La clave debe tener exactamente 16, 24 o 32 caracteres.");
         return;
     }
+
     var lector = new FileReader();
+
     lector.onload = function(e) {
         var contenidoCifrado = e.target.result.trim();
 
@@ -59,8 +63,9 @@ function leerArchivoYDescifrar(){
             document.getElementById("texto_descifrado").textContent = "Texto descifrado sin formato: " + descifrado;
             document.getElementById("texto_descifrado_formato").textContent = "Texto descifrado con formato: " + textoFormateado;
         } catch (error) {
-            alert("Verifica que el archivo y la clave sean correctos.");
+            alert("Error al descifrar. Verifica que el archivo y la clave sean correctos.");
         }
-    }
-    lector.readAsText(mensaje);
+    };
+
+    lector.readAsText(archivo);
 }
