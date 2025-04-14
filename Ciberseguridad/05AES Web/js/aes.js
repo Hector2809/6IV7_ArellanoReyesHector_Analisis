@@ -28,7 +28,7 @@ function cifrar(){
     document.body.removeChild(enlace);
 }
 
-function descifrar(){
+function leerArchivoYDescifrar(){
     var mensaje = document.getElementById("archivo_cifrado").files[0];
     var password = document.getElementById("clave").value.trim();
 
