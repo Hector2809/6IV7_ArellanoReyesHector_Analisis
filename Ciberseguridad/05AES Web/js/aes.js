@@ -39,6 +39,6 @@ function descifrar(){
         document.getElementById("texto_descifrado").textContent = "El texto descifrado sin formato es: " + descifrado;
         document.getElementById("texto_descifrado_formato").textContent = "El texto descifrado con formato es: " + descifrado.toString(CryptoJS.enc.Utf8);   
         }catch(e){
-            alert("Error al descifrar. Asegúrate de que la clave y el mensaje sean correctos.");
+            alert("Asegúrate de que la clave y el mensaje sean correctos.");
         }
 }
