@@ -32,7 +32,7 @@ function leerArchivoYDescifrar(){
     var mensaje = document.getElementById("archivo_cifrado").files[0];
     var password = document.getElementById("clave").value.trim();
 
-    if (!archivo) {
+    if (!mensaje) {
         alert("Por favor, selecciona un archivo de texto cifrado.");
         return;
     }
@@ -59,8 +59,8 @@ function leerArchivoYDescifrar(){
             document.getElementById("texto_descifrado").textContent = "Texto descifrado sin formato: " + descifrado;
             document.getElementById("texto_descifrado_formato").textContent = "Texto descifrado con formato: " + textoFormateado;
         } catch (error) {
-            alert("Error al descifrar. Verifica que el archivo y la clave sean correctos.");
+            alert("Verifica que el archivo y la clave sean correctos.");
         }
     }
-    lector.readAsText(archivo);
+    lector.readAsText(mensaje);
 }
