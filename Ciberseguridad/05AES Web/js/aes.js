@@ -29,26 +29,38 @@ function cifrar(){
 }
 
 function descifrar(){
-    var mensaje = document.getElementById("texto_a_descifrar").value.trim();
+    var mensaje = document.getElementById("archivo_cifrado").files[0];
     var password = document.getElementById("clave").value.trim();
 
-    if (mensaje === "" || password === "") {
-        alert("Por favor, llena todos los campos.");
+    if (!archivo) {
+        alert("Por favor, selecciona un archivo de texto cifrado.");
+        return;
+    }
+    if (password === "") {
+        alert("Por favor, ingresa una clave.");
         return;
     }
     if (password.length != 16 && password.length != 24 && password.length != 32) {
         alert("La clave debe tener al menos 16, 24 o 32 caracteres.");
         return;
     }
-    try{
-        var descifrado = CryptoJS.AES.decrypt(mensaje, password);
-        var textoFormateado = descifrado.toString(CryptoJS.enc.Utf8);
-        if (!textoFormateado) {
-            throw new Error("La clave es incorrecta o el texto no es válido.");
+    var lector = new FileReader();
+    lector.onload = function(e) {
+        var contenidoCifrado = e.target.result.trim();
+
+        try {
+            var descifrado = CryptoJS.AES.decrypt(contenidoCifrado, password);
+            var textoFormateado = descifrado.toString(CryptoJS.enc.Utf8);
+
+            if (!textoFormateado) {
+                throw new Error("La clave es incorrecta o el texto no es válido.");
+            }
+
+            document.getElementById("texto_descifrado").textContent = "Texto descifrado sin formato: " + descifrado;
+            document.getElementById("texto_descifrado_formato").textContent = "Texto descifrado con formato: " + textoFormateado;
+        } catch (error) {
+            alert("Error al descifrar. Verifica que el archivo y la clave sean correctos.");
         }
-        document.getElementById("texto_descifrado").textContent = "El texto descifrado sin formato es: " + descifrado;
-        document.getElementById("texto_descifrado_formato").textContent = "El texto descifrado con formato es: " + descifrado.toString(CryptoJS.enc.Utf8);   
-        }catch(e){
-            alert("Asegúrate de que la clave y el mensaje sean correctos.");
-        }
+    }
+    lector.readAsText(archivo);
 }
