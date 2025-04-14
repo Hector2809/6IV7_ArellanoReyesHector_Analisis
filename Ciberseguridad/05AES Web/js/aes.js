@@ -2,8 +2,6 @@ function cifrar(){
     var mensaje = document.getElementById("texto_a_cifrar").value;
     var password = document.getElementById("clave").value;
 
-    var cifrado = CryptoJS.AES.encrypt(mensaje, password);
-
     if (mensaje === "" || password === "") {
         alert("Por favor, llena todos los campos.");
         return;
@@ -16,15 +14,13 @@ function cifrar(){
         alert("El texto debe tener al menos 16, 24 o 32 caracteres.")
         return;
     }
-
+    var cifrado = CryptoJS.AES.encrypt(mensaje, password);
     document.getElementById("texto_cifrado").textContent = "El texto cifrado es: " + cifrado;
 }
 
 function descifrar(){
     var mensaje = document.getElementById("texto_a_descifrar").value;
     var password = document.getElementById("clave").value;
-
-    
 
     if (mensaje === "" || password === "") {
         alert("Por favor, llena todos los campos.");
