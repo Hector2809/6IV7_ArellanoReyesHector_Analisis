@@ -1,6 +1,6 @@
 function cifrar(){
-    var mensaje = document.getElementById("texto_a_cifrar").value;
-    var password = document.getElementById("clave").value;
+    var mensaje = document.getElementById("texto_a_cifrar").value.trim();
+    var password = document.getElementById("clave").value.trim();
 
     if (mensaje === "" || password === "") {
         alert("Por favor, llena todos los campos.");
@@ -19,8 +19,8 @@ function cifrar(){
 }
 
 function descifrar(){
-    var mensaje = document.getElementById("texto_a_descifrar").value;
-    var password = document.getElementById("clave").value;
+    var mensaje = document.getElementById("texto_a_descifrar").value.trim();
+    var password = document.getElementById("clave").value.trim();
 
     if (mensaje === "" || password === "") {
         alert("Por favor, llena todos los campos.");
