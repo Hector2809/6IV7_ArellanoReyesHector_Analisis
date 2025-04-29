@@ -38,7 +38,7 @@ for (p1, c1), (p2, c2) in itertools.product(points.items(), repeat=2):
 df = pd.DataFrame(data)
 
 print("Distancias calculadas:")
-print(df.head)  # Puedes ajustar cuántas filas mostrar
+print(df.head)
 
 # Encontrar los pares con menor y mayor distancia para cada métrica (excluyendo los mismos puntos)
 df_no_self = df[df["Punto 1"] != df["Punto 2"]]
