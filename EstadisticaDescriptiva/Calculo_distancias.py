@@ -45,5 +45,5 @@ for metric in ["Euclidiana", "Manhattan", "Chebyshev"]:
     min_row = df.loc[df[metric].idxmin()]
     max_row = df.loc[df[metric].idxmax()]
     print(f"\nMétrica: {metric}")
-    print(f" - Distancia mínima entre {min_row['Punto 1']} y {min_row['Punto 2']}: {min_row[metric]}")
-    print(f" - Distancia máxima entre {max_row['Punto 1']} y {max_row['Punto 2']}: {max_row[metric]}")
+    print(f"Distancia mínima entre {min_row['Punto 1']} y {min_row['Punto 2']}: {min_row[metric]}")
+    print(f"Distancia máxima entre {max_row['Punto 1']} y {max_row['Punto 2']}: {max_row[metric]}")
