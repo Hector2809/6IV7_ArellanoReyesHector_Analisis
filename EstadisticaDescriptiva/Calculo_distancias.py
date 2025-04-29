@@ -25,7 +25,7 @@ def chebyshev(p1, p2):
 
 # Aqui calcula distancias
 data = []
-for (p1, c1), (p2, c2) in itertools.combinations(points.items(), 2):
+for (p1, c1), (p2, c2) in itertools.product(points.items(), repeat=2):
     data.append({
         "Punto 1": p1,
         "Punto 2": p2,
@@ -34,16 +34,18 @@ for (p1, c1), (p2, c2) in itertools.combinations(points.items(), 2):
         "Chebyshev": chebyshev(c1, c2),
     })
 
-# Crear un DataFrame para mostrar las distancias entre los punto
+# Crear DataFrame
 df = pd.DataFrame(data)
 
 print("Distancias calculadas:")
-print(df.head())
+print(df.head)  # Puedes ajustar cuántas filas mostrar
 
-# Encontrar los pares con menor y mayor distancia
+# Encontrar los pares con menor y mayor distancia para cada métrica (excluyendo los mismos puntos)
+df_no_self = df[df["Punto 1"] != df["Punto 2"]]
+
 for metric in ["Euclidiana", "Manhattan", "Chebyshev"]:
-    min_row = df.loc[df[metric].idxmin()]
-    max_row = df.loc[df[metric].idxmax()]
+    min_row = df_no_self.loc[df_no_self[metric].idxmin()]
+    max_row = df_no_self.loc[df_no_self[metric].idxmax()]
     print(f"\nMétrica: {metric}")
     print(f"Distancia mínima entre {min_row['Punto 1']} y {min_row['Punto 2']}: {min_row[metric]}")
     print(f"Distancia máxima entre {max_row['Punto 1']} y {max_row['Punto 2']}: {max_row[metric]}")
