@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../../css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulario de Registro</h2>
+            <form id="registroForm">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label>Segundo Nombre:</label>
+                <input type="text" id="segundoNombre">
+
+                <label>Apellido Paterno:</label>
+                <input type="text" id="apellidoPaterno" required>
+
+                <label>Apellido Materno:</label>
+                <input type="text" id="apellidoMaterno" required>
+
+                <label>Password:</label>
+                <input type="password" id="password" required>
+
+                <label>Confirmar Password:</label>
+                <input type="password" id="confirmPassword" required>
+
+                <div id="errores" class="error"></div>
+
+                <button type="submit">Registrarse</button>
+            </form>
+    </div>
+    <script src="../backend/validacion.js"></script>
+</body>
+</html>

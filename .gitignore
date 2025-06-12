@@ -4,3 +4,10 @@
 /nbproject/private/
 /Ciberseguridad/03DES/nbproject/private/
 /Ciberseguridad/03DES/build/
+
+#node modules
+node_modules/
+
+
+#logs
+npm-debug.log*
