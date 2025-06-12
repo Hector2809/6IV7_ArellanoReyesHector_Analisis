@@ -6,6 +6,3 @@ CREATE TABLE usuarios(
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
-
-INSERT INTO usuarios(email, password)
-VALUES ('arellano.reyes.hector28@gmail.com', 'Prueba')
