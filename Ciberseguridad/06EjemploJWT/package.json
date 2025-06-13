@@ -1,13 +1,15 @@
 {
   "name": "06ejemplojwt",
   "version": "1.0.0",
-  "description": "Ejemplo de impementacion de un JWT",
+  "description": "Ejemplo de implementación de un JWT",
+  "license": "ISC",
+  "author": "Arellano Reyes Hector",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/index.js"
   },
-  "author": "Hector2809",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",

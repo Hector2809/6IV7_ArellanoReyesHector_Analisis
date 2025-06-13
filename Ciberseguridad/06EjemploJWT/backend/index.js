@@ -18,5 +18,5 @@ app.use(express.json());
 app.use('/api/auth', authRouters);
 
 app.listen(3000, () => {
-    console.log('Servidor en local');
+    console.log('Servidor en local: http://localhost:3000');
 })

@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="../../css/estilo.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h2>Formulario de Registro</h2>
-            <form id="registroForm">
-                <label>Nombre:</label>
-                <input type="text" id="nombre" class="form-control" required>
+    <h2>Formulario de Registro</h2>
+    <form action="" id="registerform">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <br><br>
+        <input type="text" id="nombre_2" name="nombre_2" placeholder="Segundo nombre">
+        <br><br>
+        <input type="text" id="app_paterno" name="app_paterno" placeholder="Apellido Paterno">
+        <br><br>
+        <input type="text" id="app_materno" name="app_materno" placeholder="Apellido Materno">
+        <br><br>
+        <input type="email" id="email" name="email" placeholder="Correo">
+        <br><br>
+        <input type="password" id="password" name="password" placeholder="Ingresa la Contraseña">
+        <br><br>
+        <input type="password" id="confirm_pwd" name="confirm_pwd" placeholder="Confirma la Contraseña">
+        <br><br>
+        <button type="submit">Registrarse</button>
+    </form>
 
-                <label>Segundo Nombre:</label>
-                <input type="text" id="segundoNombre" class="form-control">
+    <p>¿Ya tienes cuenta? Da clic <a href="./index.html"> aqui </a></p>
 
-                <label>Apellido Paterno:</label>
-                <input type="text" id="apellidoPaterno" class="form-control" required>
-
-                <label>Apellido Materno:</label>
-                <input type="text" id="apellidoMaterno" class="form-control" required>
-
-                <label>Password:</label>
-                <input type="password" id="password" class="form-control" required>
-
-                <label>Confirmar Password:</label>
-                <input type="password" id="confirmPassword" class="form-control" required>
-
-                <div id="errores" class="error"></div>
-
-                <button type="submit">Registrarse</button>
-            </form>
-            <a href="./Bienvenida.html"><button>Regresar</button></a>
-    </div>
-    <script src="../backend/validacion.js"></script>
+    <script src="../backend/Register.js"></script>
 </body>
+
 </html>
